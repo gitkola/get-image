@@ -1,0 +1,87 @@
+.container-custom {
+  max-width: 600px;
+  min-width: 250px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.scrollable {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.scrollable::-webkit-scrollbar {
+  width: 0px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  border-radius: 0px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  border-radius: 0px;
+}
+
+.card-custom {
+  margin: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+.form-container {
+  padding: 8px;
+}
+.submit-button {
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  padding: 0;
+  outline: none;
+  flex-shrink: 0;
+}
+.submit-button[disabled] {
+  background-color: #007bff33;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.auto-resize {
+  resize: none;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.auto-resize::-webkit-scrollbar {
+  width: 0px;
+}
+
+.auto-resize::-webkit-scrollbar-thumb {
+  width: 0px;
+}
+
+.auto-resize::-webkit-scrollbar-thumb:hover {
+  width: 0px;
+}
+
+.auto-resize::-webkit-scrollbar-track {
+  width: 0px;
+}
