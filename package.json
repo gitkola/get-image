@@ -1,8 +1,8 @@
 {
-  "name": "image-gen-web",
+  "name": "get-image",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gitkola.github.io/image-gen-web",
+  "homepage": "https://gitkola.github.io/get-image",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "bootstrap": "^5.3.3",
