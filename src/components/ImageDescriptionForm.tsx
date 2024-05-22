@@ -72,7 +72,6 @@ const ImageDescriptionForm: React.FC<ImageDescriptionFormProps> = ({
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} ref={formRef} data-testid="form">
-        <label htmlFor="prompt">Введіть опис зображення</label>
         <div className="d-flex align-items-end">
           <textarea
             id="prompt"
@@ -102,11 +101,6 @@ const ImageDescriptionForm: React.FC<ImageDescriptionFormProps> = ({
         <div className="text-right mt-2">
           <small className="text-muted">
             {prompt.length}/{MAX_PROMPT_LENGTH} символів
-          </small>
-        </div>
-        <div className="text-right mt-1">
-          <small className="text-muted">
-            Максимальна довжина опису - {MAX_PROMPT_LENGTH} символів.
           </small>
         </div>
       </form>

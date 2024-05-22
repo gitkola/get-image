@@ -65,6 +65,7 @@
 }
 
 .auto-resize {
+  padding: 4px;
   resize: none;
   overflow-y: hidden;
   scrollbar-width: none;
