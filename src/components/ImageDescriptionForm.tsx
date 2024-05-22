@@ -63,6 +63,9 @@ const ImageDescriptionForm: React.FC<ImageDescriptionFormProps> = ({
       imageUrl: "",
     };
     onSubmit(newCard);
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+    }
     setPrompt("");
   };
 
