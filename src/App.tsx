@@ -6,8 +6,7 @@ import ImageList from "./components/ImageList";
 import ImageDescriptionForm from "./components/ImageDescriptionForm";
 import { Card } from "./types";
 
-const REQUEST_URL = "http://localhost:3001/api/v1/prompt"; // TODO: update with the real server
-const DEFAULT_IMAGE_SIZE = { width: 600, height: 400 };
+const REQUEST_URL = "https://get-image-back.onrender.com/api/v1/prompt";
 const LOADING_IMAGE =
   "https://fakeimg.pl/600x400/00cccc/0000ff?text=Loading...";
 const ERROR_IMAGE = "https://fakeimg.pl/600x400/00cccc/fa0026?text=Error";
@@ -39,7 +38,6 @@ const App: React.FC = () => {
         },
         body: JSON.stringify({
           prompt: newCard.prompt,
-          size: DEFAULT_IMAGE_SIZE,
         }),
       });
 
