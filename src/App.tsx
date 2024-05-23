@@ -6,6 +6,12 @@ import ImageList from "./components/ImageList";
 import ImageDescriptionForm from "./components/ImageDescriptionForm";
 import { Card } from "./types";
 
+const REQUEST_URL = "http://localhost:3001/api/v1/prompt"; // TODO: update with the real server
+const DEFAULT_IMAGE_SIZE = { width: 600, height: 400 };
+const LOADING_IMAGE =
+  "https://fakeimg.pl/600x400/00cccc/0000ff?text=Loading...";
+const ERROR_IMAGE = "https://fakeimg.pl/600x400/00cccc/fa0026?text=Error";
+
 const App: React.FC = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [prompt, setPrompt] = useState<string>("");
@@ -13,6 +19,7 @@ const App: React.FC = () => {
   const scrollableRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (newCard: Card) => {
+    newCard.imageUrl = LOADING_IMAGE;
     setCards((prevCards) => [newCard, ...prevCards]);
     setTimeout(() => {
       if (scrollableRef.current) {
@@ -23,24 +30,32 @@ const App: React.FC = () => {
       }
     }, 100);
     setIsSubmitting(true);
-
+    let successOrErrorImage;
     try {
-      const response = await fetch("https://api.example.com/image", {
+      const response = await fetch(REQUEST_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: newCard.prompt }),
+        body: JSON.stringify({
+          prompt: newCard.prompt,
+          size: DEFAULT_IMAGE_SIZE,
+        }),
       });
+
       const data = await response.json();
-      newCard.imageUrl = data.imageUrl;
+      if (data && typeof data?.imageUrl === "string") {
+        successOrErrorImage = data?.imageUrl;
+      }
+    } catch (error) {
+      console.error("Error:", (error as Error)?.message);
+      successOrErrorImage = ERROR_IMAGE;
+    } finally {
+      newCard.imageUrl = successOrErrorImage;
       setCards((prevCards) => [
         newCard,
         ...prevCards.filter((card) => card.id !== newCard.id),
       ]);
-    } catch (error) {
-      console.error("Error:", (error as Error)?.message);
-    } finally {
       setIsSubmitting(false);
     }
   };
